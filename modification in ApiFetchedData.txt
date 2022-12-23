@@ -1,0 +1,37 @@
+
+const URL = "https://api.publicapis.org/entries";
+
+const arr2 = [];
+const arr3 =[];
+
+
+//creating 2nd promise
+const promise2 = getData2(URL);
+
+//consumer code 2
+promise2
+.then( (data)=>{
+   const dataArray = data.entries;
+   //limiting api2 data at max 10 for readability
+   for(let i=0;i<10;i++){
+    arr2.push(dataArray[i]);
+    arr3.push(dataArray[i]);
+   }
+console.log("Original data without changing API property",arr2); 
+
+   for(let i=0;i<arr3.length;i++){
+    arr3[i].API = Math.floor(Math.random() *100) + " Modified";
+}
+  
+ console.log("Modified data WITH CHANGING THE PROPERTY API",arr3);
+})
+.catch( (err) =>{
+  console.log("api 2 error",err.message);
+ });
+
+
+//producer code 2
+async function getData2(url){
+const response = await fetch(url);
+return response.json();
+}
