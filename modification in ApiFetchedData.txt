@@ -35,3 +35,5 @@ async function getData2(url){
 const response = await fetch(url);
 return response.json();
 }
+
+//my first contribution should be here to why the arr3 is not be logged here
